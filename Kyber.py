@@ -46,33 +46,33 @@ def summarize(ps):
     print ("params: ", ps.__dict__)
     print ("com costs: ", communication_costs(ps))
     F, f = p2_cyclotomic_error_probability(ps)
-    print ("failure: %.1f = 2^%.1f"%(f, log(f + 2.**(-300))/log(2)))
+    print ("failure: %.5f = 2^%.1f"%(f, log(f + 2.**(-300))/log(2)))
 
 
 if __name__ == "__main__":
     # Parameter sets
-    ps_light = KyberParameterSet(256, 2, 3, 3, 3329, 2**12, 2**10, 2**4, ke_ct=2)
+    ps_light = KyberParameterSet      (256, 2, 3, 3, 769, 2**12, 2**10, 2**4, ke_ct=2)
     ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2**12, 2**10, 2**4)
-    ps_paranoid = KyberParameterSet(256, 4, 2, 2, 3329, 2**12, 2**11, 2**5)
+    ps_paranoid = KyberParameterSet   (256, 4, 2, 2, 3329, 2**12, 2**11, 2**5)
 
     # Analyses
     print ("Kyber512 (light):")
     print ("--------------------")
-    print ("security:")
-    MLWE_summarize_attacks(Kyber_to_MLWE(ps_light))
+    #print ("security:")
+    #MLWE_summarize_attacks(Kyber_to_MLWE(ps_light))
     summarize(ps_light)
     print ()
 
     print ("Kyber768 (recommended):")
     print ("--------------------")
-    print ("security:")
-    MLWE_summarize_attacks(Kyber_to_MLWE(ps_recommended))
+    #print ("security:")
+    #MLWE_summarize_attacks(Kyber_to_MLWE(ps_recommended))
     summarize(ps_recommended)
     print ()
 
     print ("Kyber1024 (paranoid):")
     print ("--------------------")
-    print ("security:")
-    MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
+    #print ("security:")
+    #MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
     summarize(ps_paranoid)
     print ()
