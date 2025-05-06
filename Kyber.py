@@ -51,9 +51,18 @@ def summarize(ps):
 
 if __name__ == "__main__":
     # Parameter sets
-    ps_light = KyberParameterSet      (256, 2, 3, 3, 769, 2**12, 2**10, 2**4, ke_ct=2)
+    ps_light = KyberParameterSet      (256, 2, 3, 3, 3329, 2**12, 2**10, 2**4, ke_ct=2)
     ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2**12, 2**10, 2**4)
     ps_paranoid = KyberParameterSet   (256, 4, 2, 2, 3329, 2**12, 2**11, 2**5)
+
+    n = 256
+    q = 3329
+    k = 3
+    eta1 = 2
+    eta2 = 2
+    du = 10
+    dv = 4
+    ps_test = KyberParameterSet(n, k, eta1, eta1, q, 2**12, 2**du, 2**dv, ke_ct=eta2) 
 
     # Analyses
     print ("Kyber512 (light):")
@@ -75,4 +84,11 @@ if __name__ == "__main__":
     #print ("security:")
     #MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
     summarize(ps_paranoid)
+    print ()
+
+    print ("Kyber768_test (test with recommended parameter set):")
+    print ("--------------------")
+    #print ("security:")
+    #MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
+    summarize(ps_test)
     print ()
